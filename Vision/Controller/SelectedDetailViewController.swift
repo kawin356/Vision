@@ -19,14 +19,18 @@ class SelectedDetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var doneEditBarButton: UIBarButtonItem!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        doneEditBarButton.isEnabled = false
         checkKeyboard()
         
         imageView.image = UIImage(data: imageOCR.image!)
         textView.text = imageOCR.text
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        doneEditBarButton.isEnabled = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -38,6 +38,9 @@ extension SelectedDetailViewController {
     func getKeyboardHigh(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        return keyboardSize.height - (tabBarController?.tabBar.frame.size.height)!
+        if let tabbarHight = tabBarController?.tabBar.frame.size.height {
+            return keyboardSize.height - tabbarHight
+        }
+        return keyboardSize.height
     }
 }
