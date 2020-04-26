@@ -1,0 +1,48 @@
+//
+//  SelectedDetailViewController.swift
+//  Vision
+//
+//  Created by Kittikawin Sontinarakul on 26/4/2563 BE.
+//  Copyright © 2563 Kittikawin Sontinarakul. All rights reserved.
+//
+
+import UIKit
+
+class SelectedDetailViewController: UIViewController {
+    
+    var imageOCR: GoogleOCR!
+    
+    var pasteBoard = UIPasteboard.general
+    
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var doneEditBarButton: UIBarButtonItem!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkKeyboard()
+        
+        imageView.image = UIImage(data: imageOCR.image!)
+        textView.text = imageOCR.text
+        
+        doneEditBarButton.isEnabled = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        removeCheckKeyboard()
+    }
+    
+    @IBAction func doneEditingButtonPressed(_ sender: UIBarButtonItem) {
+        textView.endEditing(true)
+        doneEditBarButton.isEnabled = false
+    }
+    
+    @IBAction func copyTextButtonPressed(_ sender: UIBarButtonItem) {
+        copyToClipBoard(textToCopy: textView.text)
+    }
+    
+    private func copyToClipBoard(textToCopy: String) {
+        pasteBoard.string = textToCopy
+    }
+}
