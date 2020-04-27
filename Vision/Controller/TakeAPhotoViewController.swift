@@ -21,9 +21,6 @@ class TakeAPhotoViewController: UIViewController {
     @IBOutlet fileprivate var toggleCameraButton: UIButton!
     @IBOutlet fileprivate var toggleFlashButton: UIButton!
     
-    ///Allows the user to put the camera in video mode.
-    @IBOutlet fileprivate var videoModeButton: UIButton!
-    
     let cameraController = CameraController()
     
     override var prefersStatusBarHidden: Bool { return true }
@@ -34,7 +31,7 @@ class TakeAPhotoViewController: UIViewController {
             return DataController.taskLoadData(type: GoogleOCR.self, search: nil, sort: sort)
         }
     }
-    
+
 }
 
 //MARK: - App life Cycle
@@ -65,6 +62,11 @@ extension TakeAPhotoViewController {
 
 //MARK: - IBAction
 extension TakeAPhotoViewController {
+    
+    @IBAction func libraryPhotoButtonPressed(_ sender: UIButton) {
+        PresentaionManager.share.show(vc: .MainController)
+    }
+    
     @IBAction func toggleFlash(_ sender: UIButton) {
         if cameraController.flashMode == .on {
             cameraController.flashMode = .off

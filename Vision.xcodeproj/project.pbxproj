@@ -160,10 +160,10 @@
 			children = (
 				43727BBF245544B5009B4299 /* Extensions */,
 				43727BC924554E2C009B4299 /* ShowDetailViewController.swift */,
+				43727BD92455840A009B4299 /* OnboardingViewController.swift */,
 				43727BCB24555B9C009B4299 /* SelectedDetailViewController.swift */,
 				43727BD624558334009B4299 /* LoadingViewController.swift */,
 				43727BE32456A00F009B4299 /* TakeAPhotoViewController.swift */,
-				43727BD92455840A009B4299 /* OnboardingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

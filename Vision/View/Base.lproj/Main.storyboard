@@ -299,7 +299,7 @@
         <!--TakeA Photo View Controller-->
         <scene sceneID="wvs-qj-AEe">
             <objects>
-                <viewController id="fYQ-7F-4Po" customClass="TakeAPhotoViewController" customModule="AV_Foundation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TakeAPhoto" id="fYQ-7F-4Po" customClass="TakeAPhotoViewController" customModule="AV_Foundation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SDw-2K-tME">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,7 +308,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-Cq-CxN">
-                                        <rect key="frame" x="16" y="740" width="44" height="44"/>
+                                        <rect key="frame" x="335" y="50" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="aVa-9i-Nn8"/>
                                             <constraint firstAttribute="width" constant="44" id="mzu-5Q-2oH"/>
@@ -319,73 +319,25 @@
                                             <action selector="toggleFlash:" destination="fYQ-7F-4Po" eventType="touchUpInside" id="U5y-bm-szX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oz2-Cn-BAT">
-                                        <rect key="frame" x="16" y="792" width="44" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7S-JF-gHY">
+                                        <rect key="frame" x="310" y="792" width="44" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="MuU-Ot-8vr"/>
-                                            <constraint firstAttribute="height" constant="44" id="XuQ-Mo-QGT"/>
+                                            <constraint firstAttribute="height" constant="44" id="EPh-C2-cHO"/>
+                                            <constraint firstAttribute="width" constant="44" id="mSf-WH-KP4"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="Photo Camera Icon"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6b-RE-8PY">
-                                        <rect key="frame" x="16" y="836" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="KTt-sU-gzO"/>
-                                            <constraint firstAttribute="height" constant="44" id="aty-RW-9iN"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="Video Camera Icon"/>
-                                    </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oxb-kq-NMg">
-                                        <rect key="frame" x="16" y="52" width="382" height="77"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EX7-0W-5ut">
-                                            <size key="itemSize" width="75" height="95"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageReuseCell" id="9HF-Hq-R2j" customClass="TakeAPhotoCollectionViewCell" customModule="Vision" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-9" width="75" height="95"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5d5-5e-pdg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="95"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Do7-Oa-3q6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="95"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Do7-Oa-3q6" firstAttribute="leading" secondItem="5d5-5e-pdg" secondAttribute="leading" id="28D-TP-azp"/>
-                                                        <constraint firstItem="Do7-Oa-3q6" firstAttribute="top" secondItem="5d5-5e-pdg" secondAttribute="top" id="Mhq-Dh-OOB"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Do7-Oa-3q6" secondAttribute="bottom" id="iMC-X0-32V"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Do7-Oa-3q6" secondAttribute="trailing" id="snn-Pp-ojA"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="75" height="95"/>
-                                                <connections>
-                                                    <outlet property="imageView" destination="Do7-Oa-3q6" id="A8e-KA-Cbh"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
+                                        <state key="normal" image="ic_PhotoLibrary"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="fYQ-7F-4Po" id="RVJ-3D-aEg"/>
-                                            <outlet property="delegate" destination="fYQ-7F-4Po" id="gK4-7F-gcZ"/>
+                                            <action selector="libraryPhotoButtonPressed:" destination="fYQ-7F-4Po" eventType="touchUpInside" id="KYc-ra-Tjd"/>
                                         </connections>
-                                    </collectionView>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="C6b-RE-8PY" firstAttribute="top" secondItem="Oz2-Cn-BAT" secondAttribute="bottom" id="AoM-nz-WNS"/>
-                                    <constraint firstItem="Oz2-Cn-BAT" firstAttribute="leading" secondItem="GZa-2T-0Vm" secondAttribute="leading" constant="16" id="Ltb-eS-vpy"/>
-                                    <constraint firstItem="DbT-Cq-CxN" firstAttribute="leading" secondItem="GZa-2T-0Vm" secondAttribute="leading" constant="16" id="NgQ-dg-tAm"/>
-                                    <constraint firstItem="Oz2-Cn-BAT" firstAttribute="top" secondItem="DbT-Cq-CxN" secondAttribute="bottom" constant="8" id="PD5-Gs-Lqr"/>
-                                    <constraint firstItem="C6b-RE-8PY" firstAttribute="top" secondItem="Oz2-Cn-BAT" secondAttribute="bottom" id="Wn2-sc-RNg"/>
-                                    <constraint firstAttribute="bottom" secondItem="C6b-RE-8PY" secondAttribute="bottom" constant="16" id="jqB-zc-hfB"/>
-                                    <constraint firstItem="C6b-RE-8PY" firstAttribute="leading" secondItem="GZa-2T-0Vm" secondAttribute="leading" constant="16" id="lND-zy-zZT"/>
+                                    <constraint firstAttribute="trailing" secondItem="DbT-Cq-CxN" secondAttribute="trailing" constant="35" id="CMS-C7-T5K"/>
+                                    <constraint firstItem="DbT-Cq-CxN" firstAttribute="top" secondItem="GZa-2T-0Vm" secondAttribute="top" constant="50" id="TGJ-ra-nZz"/>
+                                    <constraint firstAttribute="trailing" secondItem="G7S-JF-gHY" secondAttribute="trailing" constant="60" id="ZuG-QS-gEw"/>
+                                    <constraint firstAttribute="bottom" secondItem="G7S-JF-gHY" secondAttribute="bottom" constant="60" id="b0Q-VB-P5X"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yG0-mp-jcn">
@@ -415,15 +367,12 @@
                     <connections>
                         <outlet property="captureButton" destination="yG0-mp-jcn" id="BLb-ry-rQe"/>
                         <outlet property="capturePreviewView" destination="GZa-2T-0Vm" id="SVW-hs-hKz"/>
-                        <outlet property="collectionView" destination="oxb-kq-NMg" id="92U-Kh-CjH"/>
-                        <outlet property="photoModeButton" destination="Oz2-Cn-BAT" id="kpU-ap-9Bs"/>
                         <outlet property="toggleFlashButton" destination="DbT-Cq-CxN" id="8Qp-7i-bIC"/>
-                        <outlet property="videoModeButton" destination="C6b-RE-8PY" id="9BC-pP-QDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ3-IN-Gwx" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4261" y="293"/>
+            <point key="canvasLocation" x="4260.8695652173919" y="292.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QSB-uG-qjP">
@@ -446,9 +395,8 @@
     </scenes>
     <resources>
         <image name="Flash Off Icon" width="24" height="24"/>
-        <image name="Photo Camera Icon" width="24" height="24"/>
-        <image name="Video Camera Icon" width="24" height="24"/>
         <image name="icLancher" width="128" height="128"/>
+        <image name="ic_PhotoLibrary" width="85" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>

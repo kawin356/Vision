@@ -22,5 +22,6 @@ struct K {
     struct StoryboardID {
         static let main = "Main"
         static let tableViewMain = "ShowTableView"
+        static let takeAPhoto = "TakeAPhoto"
     }
 }
