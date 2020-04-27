@@ -24,7 +24,6 @@ class TakeAPhotoViewController: UIViewController {
     ///Allows the user to put the camera in video mode.
     @IBOutlet fileprivate var videoModeButton: UIButton!
     
-    @IBOutlet weak var collectionView: UICollectionView!
     let cameraController = CameraController()
     
     override var prefersStatusBarHidden: Bool { return true }
@@ -59,20 +58,8 @@ extension TakeAPhotoViewController {
             captureButton.layer.cornerRadius = min(captureButton.frame.width, captureButton.frame.height) / 2
         }
         
-        func configCollectionView() {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            layout.minimumInteritemSpacing = 20
-            layout.minimumLineSpacing = 0
-            //collectionView.backgroundColor = .systemGroupedBackground
-            collectionView.isPagingEnabled = true
-            collectionView.collectionViewLayout = layout
-            collectionView.showsHorizontalScrollIndicator = true
-        }
-        
         styleCaptureButton()
         configureCameraController()
-        configCollectionView()
     }
 }
 
@@ -110,7 +97,6 @@ extension TakeAPhotoViewController {
                     object.text = result.fullTextAnnotation.text
                     object.date = Date()
                     DataController.saveContext()
-                    self.collectionView.reloadData()
                 }
             
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
@@ -119,37 +105,3 @@ extension TakeAPhotoViewController {
     }
     
 }
-
-extension TakeAPhotoViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.ReuseCell.cameraCollectionReuseCell, for: indexPath) as? TakeAPhotoCollectionViewCell
-            else { return UICollectionViewCell() }
-        if let data = images[indexPath.row].image {
-            cell.configImage(image: UIImage(data: data) ?? UIImage() )
-        } else {
-            cell.configImage(image: UIImage() )
-        }
-        
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.white.cgColor
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        PresentaionManager.share.show(vc: .MainController)
-    }
-    
-    //MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.size.width/5
-        return CGSize(width: size, height: size)
-    }
-    
-}
-
