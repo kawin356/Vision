@@ -13,13 +13,14 @@ struct K {
         static let tableViewReuseCell = "detailCell"
         static let tableViewNibName = "DetailTableViewCell"
         static let collectionImageShow = "imageCell"
+        static let cameraCollectionReuseCell = "imageReuseCell"
     }
     struct Segue {
         static let selectedDetail = "goToDetail"
         static let onboardingPage = "Onboarding"
     }
     struct StoryboardID {
-        static let main = "main"
+        static let main = "Main"
         static let tableViewMain = "ShowTableView"
     }
 }

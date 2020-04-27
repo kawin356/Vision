@@ -117,10 +117,6 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
 extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(imageOCR.count)
-        for image in imageOCR {
-            print(image.text)
-        }
         return imageOCR.count
     }
     
