@@ -31,7 +31,7 @@ class TakeAPhotoViewController: UIViewController {
             return DataController.taskLoadData(type: GoogleOCR.self, search: nil, sort: sort)
         }
     }
-
+    
 }
 
 //MARK: - App life Cycle
@@ -86,24 +86,29 @@ extension TakeAPhotoViewController {
                 return
             }
             
-            
-            try? PHPhotoLibrary.shared().performChangesAndWait {
-
-                GoogleAPI.taskDetect(form: image) { (result) in
-                    guard let result = result else {
-                        print("Don't have any text in image")
-                        return
-                    }
-                    let object = GoogleOCR(context: DataController.shared.viewContext)
-                    object.image = image.jpegData(compressionQuality: 0.5)
-                    object.text = result.fullTextAnnotation.text
-                    object.date = Date()
-                    DataController.saveContext()
+            GoogleAPI.taskDetect(form: image) { (result) in
+                guard let result = result else {
+                    print("Don't have any text in image")
+                    return
                 }
+                DataController.shared.viewContext.delete(self.images[self.images.count-1])
+                DataController.saveContext()
+                
+                let object = GoogleOCR(context: DataController.shared.viewContext)
+                object.image = image.jpegData(compressionQuality: 0.5)
+                object.text = result.fullTextAnnotation.text
+                object.date = Date()
+                DataController.saveContext()
+            }
             
+            let object = GoogleOCR(context: DataController.shared.viewContext)
+            object.text = K.Text.processing
+            object.image = image.jpegData(compressionQuality: 0.5)
+            object.date = Date()
+            DataController.saveContext()
+            try? PHPhotoLibrary.shared().performChangesAndWait {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
             }
         }
     }
-    
 }

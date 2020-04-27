@@ -53,6 +53,8 @@ class ShowDetailViewController: UIViewController {
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.pickImage.sourceType = .camera
             self.present(self.pickImage, animated: true, completion: nil)
+    
+        //    PresentaionManager.share.show(vc: .CameraController)
         }
         let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
             self.pickImage.sourceType = .photoLibrary
@@ -66,7 +68,6 @@ class ShowDetailViewController: UIViewController {
         
         present(alertController, animated: true, completion: nil)
     }
-    
 }
 //MARK: - ImagePickerDelegate
 
@@ -97,14 +98,15 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
                 self.tableView.reloadData()
                 self.isProcessing = false
             }
+            
+            let object = GoogleOCR(context: DataController.shared.viewContext)
+            object.text = K.Text.processing
+            object.image = image.jpegData(compressionQuality: 0.5)
+            object.date = Date()
+            imageOCR.insert(object, at: 0)
+            tableView.reloadData()
+            isProcessing = true
         }
-        let object = GoogleOCR(context: DataController.shared.viewContext)
-        object.text = "Processing..."
-        object.image = UIImage(named: "clock.fill")?.pngData()
-        imageOCR.insert(object, at: 0)
-        tableView.reloadData()
-        isProcessing = true
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -112,7 +114,6 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         dismiss(animated: true, completion: nil)
     }
 }
-
 
 extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -125,26 +126,31 @@ extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.activityIndicator.stopAnimating()
         
-        if let image = imageOCR[indexPath.row].image {
-            cell.imageCurrent.image = UIImage(data: image)
+        if let text = imageOCR[indexPath.row].text, text != K.Text.processing {
             cell.finishLoadData()
+            if let image = imageOCR[indexPath.row].image {
+                cell.imageCurrent.image = UIImage(data: image)
+            }
+            
+            if let text = imageOCR[indexPath.row].text {
+                cell.textTitle.text = String(text.prefix(40))
+            }
+            
+            if let textCount = imageOCR[indexPath.row].text?.count {
+                cell.charCount.text = "Charector count: \(textCount)"
+            }
+            
+            if let date = imageOCR[indexPath.row].date {
+                cell.dateLabel.text = date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
+            }
         } else {
+            if let image = imageOCR[indexPath.row].image {
+                cell.imageCurrent.image = UIImage(data: image)
+            }
+            cell.textTitle.text = K.Text.processing
             cell.setLoadingData()
             cell.activityIndicator.startAnimating()
         }
-        
-        if let text = imageOCR[indexPath.row].text {
-            cell.textTitle.text = String(text.prefix(40))
-        }
-        
-        if let textCount = imageOCR[indexPath.row].text?.count {
-            cell.charCount.text = "Charector count: \(textCount)"
-        }
-        
-        if let date = imageOCR[indexPath.row].date {
-            cell.dateLabel.text = date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
-        }
-        
         return cell
     }
     

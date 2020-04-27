@@ -15,6 +15,7 @@ class PresentaionManager {
     
     enum VC {
         case MainController
+        case CameraController
     }
     
     func show (vc: VC){
@@ -24,6 +25,9 @@ class PresentaionManager {
         case .MainController:
             viewContoller = UIStoryboard(name: K.StoryboardID.main, bundle: nil)
                 .instantiateViewController(identifier: K.StoryboardID.tableViewMain)
+        case .CameraController:
+            viewContoller = UIStoryboard(name: K.StoryboardID.main, bundle: nil)
+                .instantiateViewController(identifier: K.StoryboardID.takeAPhoto)
         }
         
         if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,

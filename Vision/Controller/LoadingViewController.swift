@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingViewController: UIViewController {
     
-    private var isUserLogin: Bool = true
+    private var isUserLogin: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

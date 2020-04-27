@@ -24,4 +24,7 @@ struct K {
         static let tableViewMain = "ShowTableView"
         static let takeAPhoto = "TakeAPhoto"
     }
+    struct Text {
+        static let processing = "Processing..."
+    }
 }
