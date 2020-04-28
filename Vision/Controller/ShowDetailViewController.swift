@@ -29,18 +29,6 @@ class ShowDetailViewController: CustomTransitionViewController {
     let pickImage = UIImagePickerController()
     
     //MARK: - App life cycle
-    fileprivate func showAlert(text: String) {
-        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    fileprivate func checkInternetConnection() {
-        if !InternetConnection.shared.isConnectionNormal {
-            isProcessing = true
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +55,20 @@ class ShowDetailViewController: CustomTransitionViewController {
     }
     
     //MARK: - Function
+    
+    fileprivate func showAlert(text: String) {
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func checkInternetConnection() {
+        if !InternetConnection.shared.isConnectionNormal {
+            isProcessing = true
+        }
+    }
+    
     fileprivate func loadCoreData() {
         let sort = NSSortDescriptor(key: "date", ascending: false)
         imageOCR = DataController.taskLoadData(type: GoogleOCR.self, search: nil, sort: sort)
