@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import TransitionButton
 
-class ShowDetailViewController: UIViewController {
+
+class ShowDetailViewController: CustomTransitionViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addImageButton: UIButton!

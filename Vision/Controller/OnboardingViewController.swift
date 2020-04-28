@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TransitionButton
 
 class OnboardingViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var startedButton: TransitionButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,24 @@ class OnboardingViewController: UIViewController {
         pageControl.numberOfPages = Slide.collection.count
     }
     
-    @IBAction func getStartedButtonPressed(_ sender: UIButton){
-        PresentaionManager.share.show(vc: .MainController)
+    @IBAction func getStartedButtonPressed(_ sender: TransitionButton){
+        
+        startedButton.startAnimation()
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
+        backgroundQueue.async(execute: {
+            
+            sleep(1)
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                // .shake: when you want to reflect to the user that the task did not complete successfly
+                // .normal
+                self.startedButton.stopAnimation(animationStyle: .expand, completion: {
+                    PresentaionManager.share.show(vc: .MainController)
+                })
+            })
+        })
     }
     
     private func updateCaption(_ index: Int){

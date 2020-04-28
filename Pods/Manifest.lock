@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.1.0)
+  - TransitionButton (0.5.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.1)
+  - TransitionButton
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - TransitionButton
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: f8295fdcfbc893a051552d93b0776f20696f82bb
+PODFILE CHECKSUM: 2ca6ec1aa65ae7ff76537115863a214a137ac8b4
 
 COCOAPODS: 1.8.4

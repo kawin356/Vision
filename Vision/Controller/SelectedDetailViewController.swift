@@ -47,11 +47,10 @@ class SelectedDetailViewController: UIViewController {
         doneEditBarButton.isEnabled = false
     }
     
-    @IBAction func copyTextButtonPressed(_ sender: UIBarButtonItem) {
-        copyToClipBoard(textToCopy: textView.text)
-    }
-    
-    private func copyToClipBoard(textToCopy: String) {
-        pasteBoard.string = textToCopy
+    @IBAction func sharedButtonPressed(_ sender: UIBarButtonItem) {
+        let img = imageView.image
+        let messageStr = textView.text
+        let activityViewController:UIActivityViewController = UIActivityViewController(activityItems:  [img!, messageStr!], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }

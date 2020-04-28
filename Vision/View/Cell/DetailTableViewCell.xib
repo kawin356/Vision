@@ -9,23 +9,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="124" id="KGk-i7-Jjw" customClass="DetailTableViewCell" customModule="Vision" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="435" height="124"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="70" id="KGk-i7-Jjw" customClass="DetailTableViewCell" customModule="Vision" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="435" height="124"/>
+                <rect key="frame" x="0.0" y="0.0" width="435" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IMj-GB-yvA">
-                        <rect key="frame" x="0.0" y="5" width="435" height="100"/>
+                        <rect key="frame" x="0.0" y="5" width="435" height="60"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HN4-Yy-pjs">
-                                <rect key="frame" x="0.0" y="0.0" width="133" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="133" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XAI-jT-6Xm">
-                                        <rect key="frame" x="0.0" y="0.0" width="133" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="XAI-jT-6Xm" secondAttribute="height" multiplier="4:3" id="VZQ-DY-AIF"/>
                                             <constraint firstAttribute="width" constant="133" id="rvU-Fn-Cyw"/>
                                         </constraints>
                                     </imageView>
@@ -39,10 +38,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cGQ-uw-6dw">
-                                <rect key="frame" x="143" y="0.0" width="292" height="100"/>
+                                <rect key="frame" x="143" y="0.0" width="292" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 23/02/2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7K-Nx-ilU">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="UsD-Nz-ko5"/>
                                         </constraints>
@@ -51,7 +50,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title: Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-cV-HrA">
-                                        <rect key="frame" x="0.0" y="33.5" width="250" height="33"/>
+                                        <rect key="frame" x="0.0" y="20" width="250" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="8Em-0L-oKi"/>
                                         </constraints>
@@ -60,7 +59,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charector: 2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0X-Vi-0JL">
-                                        <rect key="frame" x="0.0" y="66.5" width="250" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="40" width="250" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="XDs-PJ-L38"/>
                                         </constraints>
@@ -72,11 +71,11 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="KXS-D1-ous"/>
+                            <constraint firstAttribute="height" constant="60" id="KXS-D1-ous"/>
                         </constraints>
                     </stackView>
                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="n1S-pl-cQG">
-                        <rect key="frame" x="355" y="30" width="60" height="60"/>
+                        <rect key="frame" x="355" y="5" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="J5o-gD-suF"/>
                             <constraint firstAttribute="width" constant="60" id="edp-9F-hjP"/>
@@ -86,7 +85,7 @@
                 <constraints>
                     <constraint firstItem="IMj-GB-yvA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="9ZD-qU-LVY"/>
                     <constraint firstAttribute="trailing" secondItem="n1S-pl-cQG" secondAttribute="trailing" constant="20" id="M0x-Kb-8DN"/>
-                    <constraint firstItem="n1S-pl-cQG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="OVm-Qg-YpK"/>
+                    <constraint firstItem="n1S-pl-cQG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="OVm-Qg-YpK"/>
                     <constraint firstItem="n1S-pl-cQG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="faK-R1-p6e"/>
                     <constraint firstAttribute="bottom" secondItem="IMj-GB-yvA" secondAttribute="bottom" constant="2.5" id="gNd-PO-RXw"/>
                     <constraint firstItem="IMj-GB-yvA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kPe-jV-ZjO"/>
@@ -101,7 +100,7 @@
                 <outlet property="imageCurrent" destination="XAI-jT-6Xm" id="dxF-oY-mQ1"/>
                 <outlet property="textTitle" destination="0FV-cV-HrA" id="3Pp-fl-nyI"/>
             </connections>
-            <point key="canvasLocation" x="186.23188405797103" y="150.66964285714286"/>
+            <point key="canvasLocation" x="186.23188405797103" y="132.58928571428572"/>
         </tableViewCell>
     </objects>
 </document>

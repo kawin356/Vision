@@ -114,9 +114,9 @@
                                     <constraint firstAttribute="height" constant="44" id="m6e-Vf-eGc"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Copy Text" id="Tih-RM-PbO">
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="Tih-RM-PbO">
                                         <connections>
-                                            <action selector="copyTextButtonPressed:" destination="ZGF-lJ-FdB" id="LSA-LU-ich"/>
+                                            <action selector="sharedButtonPressed:" destination="ZGF-lJ-FdB" id="LSA-LU-ich"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hfJ-h3-bPD"/>
@@ -165,7 +165,7 @@
         <!--Loading View Controller-->
         <scene sceneID="XMD-bU-SxO">
             <objects>
-                <viewController id="svO-n2-klj" customClass="LoadingViewController" customModule="Trafel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="svO-n2-klj" customClass="LoadingViewController" customModule="Vision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hru-aE-P0z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,12 +200,12 @@
         <!--Onboarding View Controller-->
         <scene sceneID="uTm-27-4YK">
             <objects>
-                <viewController storyboardIdentifier="OnboardingViewController" modalPresentationStyle="fullScreen" id="XoW-Lt-CaN" customClass="OnboardingViewController" customModule="Trafel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" modalPresentationStyle="fullScreen" id="XoW-Lt-CaN" customClass="OnboardingViewController" customModule="Vision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0YV-MR-07Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QY9-rg-Hpt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QY9-rg-Hpt" customClass="TransitionButton" customModule="TransitionButton">
                                 <rect key="frame" x="36" y="766" width="342" height="56"/>
                                 <color key="backgroundColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -232,7 +232,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="Nx9-dG-lIo" customClass="OnboardingCollectionViewCell" customModule="Trafel" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="Nx9-dG-lIo" customClass="OnboardingCollectionViewCell" customModule="Vision" customModuleProvider="target">
                                         <rect key="frame" x="18.5" y="0.0" width="377" height="345"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8Sq-Cf-Y60">
@@ -305,6 +305,7 @@
                         <outlet property="collectionView" destination="5XI-yc-k5B" id="g7W-Ct-kQ5"/>
                         <outlet property="descriptionLabel" destination="6k0-PC-0le" id="HeG-aH-2fe"/>
                         <outlet property="pageControl" destination="kqg-jf-U3A" id="JaR-TB-Kqw"/>
+                        <outlet property="startedButton" destination="QY9-rg-Hpt" id="2HC-m7-7DO"/>
                         <outlet property="titleLabel" destination="frr-8n-WYj" id="aUy-sf-m7i"/>
                     </connections>
                 </viewController>
@@ -315,7 +316,7 @@
         <!--TakeA Photo View Controller-->
         <scene sceneID="wvs-qj-AEe">
             <objects>
-                <viewController storyboardIdentifier="TakeAPhoto" id="fYQ-7F-4Po" customClass="TakeAPhotoViewController" customModule="AV_Foundation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TakeAPhoto" id="fYQ-7F-4Po" customClass="TakeAPhotoViewController" customModule="Vision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SDw-2K-tME">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -421,7 +422,8 @@
     <resources>
         <image name="Flash Off Icon" width="24" height="24"/>
         <image name="ic_PhotoLibrary" width="85" height="85"/>
-        <image name="ic_icon" width="170.5" height="170.5"/>
+        <image name="ic_icon" width="341" height="341"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
