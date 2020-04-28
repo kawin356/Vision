@@ -31,6 +31,7 @@
 		43727BDE245584B1009B4299 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDD245584B0009B4299 /* Slide.swift */; };
 		43727BE0245585AD009B4299 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */; };
 		43727BE62456A193009B4299 /* TakeAPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BE52456A193009B4299 /* TakeAPhotoCollectionViewCell.swift */; };
+		43727BE82458036F009B4299 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BE72458036F009B4299 /* Reachability.swift */; };
 		EBEF209996C272E5DDA4559D /* Pods_Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25906961862B02E3A3DE2554 /* Pods_Vision.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		43727BDD245584B0009B4299 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		43727BE52456A193009B4299 /* TakeAPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		43727BE72458036F009B4299 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C04D62BF4FA7FC43EE68B3A3 /* Pods-Vision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vision.release.xcconfig"; path = "Target Support Files/Pods-Vision/Pods-Vision.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				43556CA42453F7A30002F9B0 /* Info.plist */,
 				43727BC324554B0D009B4299 /* Constants.swift */,
 				43727BDB24558436009B4299 /* Helper.swift */,
+				43727BE72458036F009B4299 /* Reachability.swift */,
 				43727BD524558253009B4299 /* PresentManager */,
 				43556CAC2453F9120002F9B0 /* Model */,
 				43727BBE24554455009B4299 /* View */,
@@ -339,6 +342,7 @@
 				43727BCE245560F1009B4299 /* KeyboardCheckController.swift in Sources */,
 				43727BC424554B0D009B4299 /* Constants.swift in Sources */,
 				43556CB12453FE5A0002F9B0 /* GoogleAPI.swift in Sources */,
+				43727BE82458036F009B4299 /* Reachability.swift in Sources */,
 				43727BDA2455840A009B4299 /* OnboardingViewController.swift in Sources */,
 				431F0F29245455A6005E4DB3 /* DataController.swift in Sources */,
 				43556C992453F7A10002F9B0 /* SceneDelegate.swift in Sources */,
@@ -499,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kittikawins.Vision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -518,7 +522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kittikawins.Vision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

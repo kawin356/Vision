@@ -11,14 +11,35 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         DataController.shared.load()
         
+        do {
+            try reachability = Reachability()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: Notification.Name.reachabilityChanged, object: reachability)
+            try reachability.startNotifier()
+        } catch {
+            print("This is not working.")
+        }
+        
         return true
+    }
+    
+    @objc func reachabilityChanged(_ note: NSNotification) {
+        let reachability = note.object as! Reachability
+        if reachability.connection != .unavailable {
+            if reachability.connection == .wifi {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        } else {
+            InternetConnection.shared.isConnectionNormal = false
+        }
     }
 
     // MARK: UISceneSession Lifecycle

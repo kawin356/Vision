@@ -11,3 +11,8 @@ import Foundation
 func delay(durationInSeconds secound: Double, completion: @escaping () -> Void){
     DispatchQueue.main.asyncAfter(deadline: .now() + secound, execute: completion)
 }
+
+struct InternetConnection {
+    static var shared = InternetConnection()
+    var isConnectionNormal: Bool = true
+}

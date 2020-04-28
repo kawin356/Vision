@@ -28,8 +28,24 @@ class ShowDetailViewController: CustomTransitionViewController {
     
     let pickImage = UIImagePickerController()
     
-
-//MARK: - App life cycle
+    
+    
+    
+    //MARK: - App life cycle
+    
+    fileprivate func showAlert(text: String) {
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func checkInternetConnection() {
+        if !InternetConnection.shared.isConnectionNormal {
+            showAlert(text: "Please Check Internet Connection!!")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pickImage.delegate = self
@@ -42,6 +58,7 @@ class ShowDetailViewController: CustomTransitionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadCoreData()
+        checkInternetConnection()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,7 +70,7 @@ class ShowDetailViewController: CustomTransitionViewController {
         }
     }
     
-//MARK: - Function
+    //MARK: - Function
     fileprivate func loadCoreData() {
         let sort = NSSortDescriptor(key: "date", ascending: false)
         imageOCR = DataController.taskLoadData(type: GoogleOCR.self, search: nil, sort: sort)
@@ -84,7 +101,7 @@ class ShowDetailViewController: CustomTransitionViewController {
         refreshControl.endRefreshing()
     }
     
-//MARK: - IBAction
+    //MARK: - IBAction
     @IBAction func addImageFrom(_ sender: Any) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
@@ -140,7 +157,7 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
             guard let newImage = image.resizeWithWidth(width: 800) else {return}
             GoogleAPI.taskDetect(form: newImage) { (result) in
                 guard let result = result else {
-                    print("Don't have any text in image")
+                    self.showAlert(text: "Don't have any text in image")
                     return
                 }
                 let object = GoogleOCR(context: DataController.shared.viewContext)
@@ -191,7 +208,7 @@ extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if let date = imageOCR[indexPath.row].date {
-                cell.dateLabel.text = date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
+                cell.dateLabel.text = date.getFormattedDate(format: "yyyy-MM-dd HH:mm")
             }
         } else {
             if let image = imageOCR[indexPath.row].image {
@@ -224,9 +241,7 @@ extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         indexPathForSelectedRow = indexPath
-       // if !isProcessing {
-            performSegue(withIdentifier: K.Segue.selectedDetail, sender: nil)
-       // }
+        performSegue(withIdentifier: K.Segue.selectedDetail, sender: nil)
     }
 }
 
