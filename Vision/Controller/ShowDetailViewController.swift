@@ -28,11 +28,7 @@ class ShowDetailViewController: CustomTransitionViewController {
     
     let pickImage = UIImagePickerController()
     
-    
-    
-    
     //MARK: - App life cycle
-    
     fileprivate func showAlert(text: String) {
         let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -42,7 +38,7 @@ class ShowDetailViewController: CustomTransitionViewController {
     
     fileprivate func checkInternetConnection() {
         if !InternetConnection.shared.isConnectionNormal {
-            showAlert(text: "Please Check Internet Connection!!")
+            isProcessing = true
         }
     }
     
@@ -140,6 +136,7 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         self.imageOCR.remove(at: 0)
         DataController.saveContext()
         self.tableView.reloadData()
+        self.isProcessing = false
     }
     
     fileprivate func saveCoreDataInsertTable(_ object: GoogleOCR, _ image: Data, _ result: Results) {
@@ -149,15 +146,15 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         DataController.saveContext()
         self.imageOCR.insert(object, at: 0)
         self.tableView.reloadData()
-        self.isProcessing = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             guard let newImage = image.resizeWithWidth(width: 800) else {return}
-            GoogleAPI.taskDetect(form: newImage) { (result) in
+            GoogleAPI.taskDetect(form: newImage) { (result,errorString) in
                 guard let result = result else {
-                    self.showAlert(text: "Don't have any text in image")
+                    self.showAlert(text: errorString!)
+                    self.removeCellProcessing()
                     return
                 }
                 let object = GoogleOCR(context: DataController.shared.viewContext)

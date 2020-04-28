@@ -30,7 +30,6 @@
 		43727BDC24558437009B4299 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDB24558436009B4299 /* Helper.swift */; };
 		43727BDE245584B1009B4299 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDD245584B0009B4299 /* Slide.swift */; };
 		43727BE0245585AD009B4299 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */; };
-		43727BE62456A193009B4299 /* TakeAPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BE52456A193009B4299 /* TakeAPhotoCollectionViewCell.swift */; };
 		43727BE82458036F009B4299 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BE72458036F009B4299 /* Reachability.swift */; };
 		EBEF209996C272E5DDA4559D /* Pods_Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25906961862B02E3A3DE2554 /* Pods_Vision.framework */; };
 /* End PBXBuildFile section */
@@ -63,7 +62,6 @@
 		43727BDB24558436009B4299 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		43727BDD245584B0009B4299 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		43727BE52456A193009B4299 /* TakeAPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		43727BE72458036F009B4299 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C04D62BF4FA7FC43EE68B3A3 /* Pods-Vision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vision.release.xcconfig"; path = "Target Support Files/Pods-Vision/Pods-Vision.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,7 +189,6 @@
 				43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */,
 				43727BC524554B4E009B4299 /* DetailTableViewCell.swift */,
 				43727BC624554B4E009B4299 /* DetailTableViewCell.xib */,
-				43727BE52456A193009B4299 /* TakeAPhotoCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -332,7 +329,6 @@
 				431F0F2C245455BF005E4DB3 /* Vision.xcdatamodeld in Sources */,
 				43727BD724558334009B4299 /* LoadingViewController.swift in Sources */,
 				431F0F2324541FE4005E4DB3 /* GoogleResponse.swift in Sources */,
-				43727BE62456A193009B4299 /* TakeAPhotoCollectionViewCell.swift in Sources */,
 				43727BD42455824A009B4299 /* PresentationManager.swift in Sources */,
 				43727BCC24555B9C009B4299 /* SelectedDetailViewController.swift in Sources */,
 				43727BE0245585AD009B4299 /* OnboardingCollectionViewCell.swift in Sources */,

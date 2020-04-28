@@ -35,10 +35,9 @@ class GoogleAPI {
         return image.pngData()?.base64EncodedString(options: .endLineWithCarriageReturn)
     }
     
-    class func taskDetect(form image: UIImage, completion: @escaping (Results?) -> Void) {
+    class func taskDetect(form image: UIImage, completion: @escaping (Results?,String?) -> Void) {
         guard let base64Image = base64EncodeImage(image) else {
-            print("Error while base64 encoding image")
-            completion(nil)
+            completion(nil,"Error while base64 encoding image")
             return
         }
         let parameters: Parameters = [
@@ -67,15 +66,16 @@ class GoogleAPI {
             .responseData { response in
                 
                 guard let data = response.data else {
-                    completion(nil)
+                    completion(nil,response.error?.localizedDescription)
                     return
                 }
                 do {
                     //print(String(data: data, encoding: .utf8)!)
                 let object = try JSONDecoder().decode(GoogleResponse.self, from: data)
-                    completion(object.responses[0])
+                    completion(object.responses[0],nil)
                 } catch {
                     print(error.localizedDescription)
+                    completion(nil, error.localizedDescription)
                 }
         }
     }
