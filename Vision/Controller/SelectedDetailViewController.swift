@@ -36,6 +36,12 @@ class SelectedDetailViewController: UIViewController {
         removeCheckKeyboard()
     }
     
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        imageOCR.text = textView.text
+        DataController.saveContext()
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func doneEditingButtonPressed(_ sender: UIBarButtonItem) {
         textView.endEditing(true)
         doneEditBarButton.isEnabled = false

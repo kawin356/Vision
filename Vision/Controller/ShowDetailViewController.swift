@@ -9,10 +9,14 @@
 import UIKit
 
 class ShowDetailViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var imageOCR: [GoogleOCR] = []
+    
+    var indexPathForSelectedRow: IndexPath?
     
     var isProcessing: Bool = false {
         didSet {
@@ -22,39 +26,68 @@ class ShowDetailViewController: UIViewController {
     
     let pickImage = UIImagePickerController()
     
-    fileprivate func loadCoreData() {
-        let sort = NSSortDescriptor(key: "date", ascending: false)
-        imageOCR = DataController.taskLoadData(type: GoogleOCR.self, search: nil, sort: sort)
-        tableView.reloadData()
-    }
-    
+
+//MARK: - App life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         pickImage.delegate = self
         tableView.register(UINib(nibName: K.ReuseCell.tableViewNibName, bundle: nil), forCellReuseIdentifier: K.ReuseCell.tableViewReuseCell)
-        loadCoreData()
         
-        addImageButton.layer.cornerRadius = addImageButton.frame.size.width / 2
-        addImageButton.layer.masksToBounds = true
+        setupPullRefresh()
+        setupRadiusButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadCoreData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.selectedDetail {
             let viewController = segue.destination as! SelectedDetailViewController
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let indexPath = indexPathForSelectedRow {
                 viewController.imageOCR = imageOCR[indexPath.row]
             }
         }
     }
     
-    @IBAction func addImageFrom(_ sender: Any) {
+//MARK: - Function
+    fileprivate func loadCoreData() {
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        imageOCR = DataController.taskLoadData(type: GoogleOCR.self, search: nil, sort: sort)
+        tableView.reloadData()
+        activityIndicator.stopAnimating()
+    }
+    
+    fileprivate func setupRadiusButton() {
+        addImageButton.layer.cornerRadius = addImageButton.frame.size.width / 2
+        addImageButton.layer.masksToBounds = true
+        activityIndicator.layer.cornerRadius = 10
+        activityIndicator.layer.masksToBounds = true
+    }
+    
+    fileprivate func setupPullRefresh() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.backgroundView = refreshControl
+        }
+    }
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        loadCoreData()
+        refreshControl.endRefreshing()
+    }
+    
+//MARK: - IBAction
+    @IBAction func addImageFrom(_ sender: Any) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.pickImage.sourceType = .camera
             self.present(self.pickImage, animated: true, completion: nil)
-    
-        //    PresentaionManager.share.show(vc: .CameraController)
         }
         let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
             self.pickImage.sourceType = .photoLibrary
@@ -69,14 +102,40 @@ class ShowDetailViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
-//MARK: - ImagePickerDelegate
 
+//MARK: - ImagePickerDelegate
 extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    fileprivate func addCellProcessing(_ image: UIImage) {
+        let object = GoogleOCR(context: DataController.shared.viewContext)
+        object.text = K.Text.processing
+        object.image = image.jpegData(compressionQuality: 0.5)
+        object.date = Date()
+        imageOCR.insert(object, at: 0)
+        tableView.reloadData()
+        isProcessing = true
+    }
+    
+    fileprivate func removeCellProcessing() {
+        DataController.shared.viewContext.delete(self.imageOCR[0])
+        self.imageOCR.remove(at: 0)
+        DataController.saveContext()
+        self.tableView.reloadData()
+    }
+    
+    fileprivate func saveCoreDataInsertTable(_ object: GoogleOCR, _ image: Data, _ result: Results) {
+        object.image = image
+        object.text = result.fullTextAnnotation.text
+        object.date = Date()
+        DataController.saveContext()
+        self.imageOCR.insert(object, at: 0)
+        self.tableView.reloadData()
+        self.isProcessing = false
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             guard let newImage = image.resizeWithWidth(width: 800) else {return}
-            //imageView.image = newImage
             GoogleAPI.taskDetect(form: newImage) { (result) in
                 guard let result = result else {
                     print("Don't have any text in image")
@@ -86,26 +145,13 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
                 guard let image = newImage.pngData() else {
                     return
                 }
-                DataController.shared.viewContext.delete(self.imageOCR[0])
-                self.imageOCR.remove(at: 0)
-                DataController.saveContext()
-                self.tableView.reloadData()
-                object.image = image
-                object.text = result.fullTextAnnotation.text
-                object.date = Date()
-                DataController.saveContext()
-                self.imageOCR.insert(object, at: 0)
-                self.tableView.reloadData()
-                self.isProcessing = false
+                self.removeCellProcessing()
+                self.saveCoreDataInsertTable(object, image, result)
+                
+                self.tableView.setContentOffset(CGPoint.zero, animated: true)
             }
             
-            let object = GoogleOCR(context: DataController.shared.viewContext)
-            object.text = K.Text.processing
-            object.image = image.jpegData(compressionQuality: 0.5)
-            object.date = Date()
-            imageOCR.insert(object, at: 0)
-            tableView.reloadData()
-            isProcessing = true
+            addCellProcessing(image)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -115,6 +161,8 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
     }
 }
 
+
+//MARK: - UITableViewDelegate
 extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,9 +220,11 @@ extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !isProcessing {
+        tableView.deselectRow(at: indexPath, animated: true)
+        indexPathForSelectedRow = indexPath
+       // if !isProcessing {
             performSegue(withIdentifier: K.Segue.selectedDetail, sender: nil)
-        }
+       // }
     }
 }
 
