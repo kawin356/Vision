@@ -12,6 +12,7 @@ import TransitionButton
 
 class ShowDetailViewController: CustomTransitionViewController {
     
+    @IBOutlet weak var imageNothinghere: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -184,6 +185,11 @@ extension ShowDetailViewController: UIImagePickerControllerDelegate, UINavigatio
 extension ShowDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if imageOCR.count == 0 {
+            imageNothinghere.isHidden = false
+        } else {
+            imageNothinghere.isHidden = true
+        }
         return imageOCR.count
     }
     

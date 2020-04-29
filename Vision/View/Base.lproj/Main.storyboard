@@ -49,6 +49,10 @@
                                     <action selector="addImageFrom:" destination="lWS-lZ-hG6" eventType="touchUpInside" id="p1a-zp-jpC"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_nothinghere" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-Cr-H6U">
+                                <rect key="frame" x="5" y="244" width="407" height="408"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -67,6 +71,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="YGV-oM-rvR" id="z8F-P3-iO1"/>
                         <outlet property="addImageButton" destination="N4W-Bm-UFi" id="WEG-f8-FO2"/>
+                        <outlet property="imageNothinghere" destination="SHa-Cr-H6U" id="n2F-ec-V39"/>
                         <outlet property="tableView" destination="yFX-vg-eZk" id="Jnz-5K-hKQ"/>
                         <segue destination="ZGF-lJ-FdB" kind="show" identifier="goToDetail" id="Zv6-dh-2BF"/>
                     </connections>
@@ -423,6 +428,7 @@
         <image name="Flash Off Icon" width="24" height="24"/>
         <image name="ic_PhotoLibrary" width="85" height="85"/>
         <image name="ic_icon" width="341" height="341"/>
+        <image name="ic_nothinghere" width="341" height="341"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
