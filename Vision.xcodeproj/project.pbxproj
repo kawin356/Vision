@@ -63,6 +63,7 @@
 		43727BDD245584B0009B4299 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		43727BE72458036F009B4299 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		43727BE924593F7C009B4299 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C04D62BF4FA7FC43EE68B3A3 /* Pods-Vision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vision.release.xcconfig"; path = "Target Support Files/Pods-Vision/Pods-Vision.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +99,7 @@
 		43556C8A2453F7A10002F9B0 = {
 			isa = PBXGroup;
 			children = (
+				43727BE924593F7C009B4299 /* README.md */,
 				43556C952453F7A10002F9B0 /* Vision */,
 				43556C942453F7A10002F9B0 /* Products */,
 				19076C50EE1D11EFA2F84E8F /* Pods */,
