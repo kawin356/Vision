@@ -16,13 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DataController.shared.load()
         
-        do {
-            try reachability = Reachability()
-            NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: Notification.Name.reachabilityChanged, object: reachability)
-            try reachability.startNotifier()
-        } catch {
-            print("This is not working.")
-        }
+        createNotificationToCheckConnection()
         
         return true
     }
@@ -46,6 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
             let window = sceneDelegate.window {
             window.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func createNotificationToCheckConnection() {
+        do {
+            try reachability = Reachability()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: Notification.Name.reachabilityChanged, object: reachability)
+            try reachability.startNotifier()
+        } catch {
+            print("This is not working.")
         }
     }
 }

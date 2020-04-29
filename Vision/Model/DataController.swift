@@ -46,7 +46,7 @@ class DataController {
     class func deleteEntity() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vision")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+        
         do {
             try DataController.shared.viewContext.execute(deleteRequest)
         } catch let error as NSError {
@@ -68,8 +68,6 @@ class DataController {
         }
     }
     
-    
-    
     class func taskLoadData<T: NSManagedObject>(type: T.Type, search: NSPredicate?, sort: NSSortDescriptor?) -> [T] {
         
         let context = DataController.shared.viewContext
@@ -83,7 +81,7 @@ class DataController {
         if let sort = sort {
             request.sortDescriptors = [sort]
         }
-                
+        
         do
         {
             let results = try context.fetch(request)

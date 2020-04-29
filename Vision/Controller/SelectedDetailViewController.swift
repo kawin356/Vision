@@ -35,8 +35,8 @@ class SelectedDetailViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         removeCheckKeyboard()
     }
-
-//MARK: - IBAction
+    
+    //MARK: - IBAction
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         imageOCR.text = textView.text
         DataController.saveContext()

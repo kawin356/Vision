@@ -71,7 +71,7 @@ class GoogleAPI {
                 }
                 do {
                     //print(String(data: data, encoding: .utf8)!)
-                let object = try JSONDecoder().decode(GoogleResponse.self, from: data)
+                    let object = try JSONDecoder().decode(GoogleResponse.self, from: data)
                     completion(object.responses[0],nil)
                 } catch {
                     print(error.localizedDescription)
@@ -79,7 +79,5 @@ class GoogleAPI {
                 }
         }
     }
-    
-    
 }
 

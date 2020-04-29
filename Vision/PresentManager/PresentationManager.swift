@@ -34,8 +34,8 @@ class PresentaionManager {
             let window = sceneDelegate.window {
             window.rootViewController = viewContoller
             UIView.transition(with: window, duration: 0.25,
-            options: .transitionCrossDissolve,
-            animations: nil, completion: nil)
+                              options: .transitionCrossDissolve,
+                              animations: nil, completion: nil)
         }
     }
 }

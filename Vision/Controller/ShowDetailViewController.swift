@@ -29,8 +29,7 @@ class ShowDetailViewController: CustomTransitionViewController {
     
     let pickImage = UIImagePickerController()
     
-    //MARK: - App life cycle
-    
+//MARK: - App life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         pickImage.delegate = self
@@ -55,8 +54,7 @@ class ShowDetailViewController: CustomTransitionViewController {
         }
     }
     
-    //MARK: - Function
-    
+//MARK: - Function
     fileprivate func showAlert(text: String) {
         let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -100,12 +98,15 @@ class ShowDetailViewController: CustomTransitionViewController {
         refreshControl.endRefreshing()
     }
     
-    //MARK: - IBAction
+//MARK: - IBAction
     @IBAction func addImageFrom(_ sender: Any) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
-            self.pickImage.sourceType = .camera
-            self.present(self.pickImage, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+                self.pickImage.sourceType = .camera
+                self.present(self.pickImage, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
         }
         let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
             self.pickImage.sourceType = .photoLibrary
@@ -113,7 +114,7 @@ class ShowDetailViewController: CustomTransitionViewController {
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alertController.addAction(cameraAction)
+        
         alertController.addAction(photoLibrary)
         alertController.addAction(cancel)
         

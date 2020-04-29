@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLs-5c-beb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6763.7681159420299" y="292.63392857142856"/>
+            <point key="canvasLocation" x="6630" y="293"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="XMD-bU-SxO">
@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXa-NW-mIZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="295"/>
+            <point key="canvasLocation" x="3388" y="293"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="uTm-27-4YK">
@@ -316,85 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzZ-gA-a6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="293"/>
-        </scene>
-        <!--TakeA Photo View Controller-->
-        <scene sceneID="wvs-qj-AEe">
-            <objects>
-                <viewController storyboardIdentifier="TakeAPhoto" id="fYQ-7F-4Po" customClass="TakeAPhotoViewController" customModule="Vision" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SDw-2K-tME">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZa-2T-0Vm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-Cq-CxN">
-                                        <rect key="frame" x="335" y="50" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="aVa-9i-Nn8"/>
-                                            <constraint firstAttribute="width" constant="44" id="mzu-5Q-2oH"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="Flash Off Icon"/>
-                                        <connections>
-                                            <action selector="toggleFlash:" destination="fYQ-7F-4Po" eventType="touchUpInside" id="U5y-bm-szX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7S-JF-gHY">
-                                        <rect key="frame" x="310" y="792" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="EPh-C2-cHO"/>
-                                            <constraint firstAttribute="width" constant="44" id="mSf-WH-KP4"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="ic_PhotoLibrary"/>
-                                        <connections>
-                                            <action selector="libraryPhotoButtonPressed:" destination="fYQ-7F-4Po" eventType="touchUpInside" id="KYc-ra-Tjd"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="DbT-Cq-CxN" secondAttribute="trailing" constant="35" id="CMS-C7-T5K"/>
-                                    <constraint firstItem="DbT-Cq-CxN" firstAttribute="top" secondItem="GZa-2T-0Vm" secondAttribute="top" constant="50" id="TGJ-ra-nZz"/>
-                                    <constraint firstAttribute="trailing" secondItem="G7S-JF-gHY" secondAttribute="trailing" constant="60" id="ZuG-QS-gEw"/>
-                                    <constraint firstAttribute="bottom" secondItem="G7S-JF-gHY" secondAttribute="bottom" constant="60" id="b0Q-VB-P5X"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yG0-mp-jcn">
-                                <rect key="frame" x="179.5" y="791" width="55" height="55"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="99y-r9-dvr"/>
-                                    <constraint firstAttribute="width" constant="55" id="h2c-nA-Zhw"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="captureImage:" destination="fYQ-7F-4Po" eventType="touchUpInside" id="hwP-Ml-7ME"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="akX-p1-koA" firstAttribute="trailing" secondItem="GZa-2T-0Vm" secondAttribute="trailing" id="8hp-qK-q3S"/>
-                            <constraint firstAttribute="bottom" secondItem="GZa-2T-0Vm" secondAttribute="bottom" id="CbH-DJ-rxj"/>
-                            <constraint firstItem="GZa-2T-0Vm" firstAttribute="leading" secondItem="akX-p1-koA" secondAttribute="leading" id="EUq-5d-Fi7"/>
-                            <constraint firstItem="yG0-mp-jcn" firstAttribute="centerX" secondItem="akX-p1-koA" secondAttribute="centerX" id="HDU-yP-fNf"/>
-                            <constraint firstItem="akX-p1-koA" firstAttribute="bottom" secondItem="yG0-mp-jcn" secondAttribute="bottom" constant="16" id="NyP-7Z-AFH"/>
-                            <constraint firstItem="GZa-2T-0Vm" firstAttribute="top" secondItem="SDw-2K-tME" secondAttribute="top" id="f8P-Yc-pdf"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="akX-p1-koA"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="captureButton" destination="yG0-mp-jcn" id="BLb-ry-rQe"/>
-                        <outlet property="capturePreviewView" destination="GZa-2T-0Vm" id="SVW-hs-hKz"/>
-                        <outlet property="toggleFlashButton" destination="DbT-Cq-CxN" id="8Qp-7i-bIC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OJ3-IN-Gwx" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3925" y="293"/>
+            <point key="canvasLocation" x="4107" y="291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QSB-uG-qjP">
@@ -421,12 +343,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAB-2A-5R6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5031.884057971015" y="295.3125"/>
+            <point key="canvasLocation" x="5197" y="293"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Flash Off Icon" width="24" height="24"/>
-        <image name="ic_PhotoLibrary" width="85" height="85"/>
         <image name="ic_icon" width="341" height="341"/>
         <image name="ic_nothinghere" width="341" height="341"/>
         <image name="plus" catalog="system" width="128" height="113"/>

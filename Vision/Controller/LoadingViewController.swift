@@ -10,8 +10,6 @@ import UIKit
 
 class LoadingViewController: UIViewController {
     
-    private var isUserLogin: Bool = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,10 +22,11 @@ class LoadingViewController: UIViewController {
     }
     
     private func showInitialView() {
-        if isUserLogin {
-            PresentaionManager.share.show(vc: .MainController)
-        } else {
+        if !UserDefaults.standard.bool(forKey: "isNotFirstTime") {
             performSegue(withIdentifier: K.Segue.onboardingPage, sender: nil)
+            UserDefaults.standard.set(true, forKey: "isNotFirstTime")
+        } else {
+            PresentaionManager.share.show(vc: .MainController)
         }
     }
 }
