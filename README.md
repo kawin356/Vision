@@ -19,7 +19,7 @@ This project allows users to Take a Photo or Choose photo in library to process 
 
 ### Any Languege 
 
-![](ScreenShot/4,gif)
+![](ScreenShot/4.gif)
 
 
 ## How to use this application
