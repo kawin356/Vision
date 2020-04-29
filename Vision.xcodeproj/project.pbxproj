@@ -31,6 +31,7 @@
 		43727BDE245584B1009B4299 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDD245584B0009B4299 /* Slide.swift */; };
 		43727BE0245585AD009B4299 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */; };
 		43727BE82458036F009B4299 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43727BE72458036F009B4299 /* Reachability.swift */; };
+		43727BEB24594920009B4299 /* ScreenShot in Resources */ = {isa = PBXBuildFile; fileRef = 43727BEA24594920009B4299 /* ScreenShot */; };
 		EBEF209996C272E5DDA4559D /* Pods_Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25906961862B02E3A3DE2554 /* Pods_Vision.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		43727BDF245585AD009B4299 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		43727BE72458036F009B4299 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		43727BE924593F7C009B4299 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		43727BEA24594920009B4299 /* ScreenShot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScreenShot; sourceTree = "<group>"; };
 		C04D62BF4FA7FC43EE68B3A3 /* Pods-Vision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vision.release.xcconfig"; path = "Target Support Files/Pods-Vision/Pods-Vision.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				43727BE924593F7C009B4299 /* README.md */,
+				43727BEA24594920009B4299 /* ScreenShot */,
 				43556C952453F7A10002F9B0 /* Vision */,
 				43556C942453F7A10002F9B0 /* Products */,
 				19076C50EE1D11EFA2F84E8F /* Pods */,
@@ -271,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43727BEB24594920009B4299 /* ScreenShot in Resources */,
 				43556CA32453F7A30002F9B0 /* LaunchScreen.storyboard in Resources */,
 				43556CA02453F7A30002F9B0 /* Assets.xcassets in Resources */,
 				43727BC824554B4E009B4299 /* DetailTableViewCell.xib in Resources */,
